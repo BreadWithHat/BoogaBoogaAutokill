@@ -53,6 +53,8 @@ Kill.MouseButton1Click:connect(function()
 		chr.HumanoidRootPart.Size = Vector3.new(20,20,20)
 		wait()
 		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = chr.Head.CFrame * CFrame.new(0,9,0)
+    end
+end)
 
 PlayerName.Name = "PlayerName"
 PlayerName.Parent = Frame

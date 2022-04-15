@@ -1,0 +1,58 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Kill = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local PlayerName = Instance.new("TextLabel")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+Frame.Position = UDim2.new(0.901851177, 0, 0.707797825, 0)
+Frame.Size = UDim2.new(0, 227, 0, 313)
+
+UICorner.Parent = Frame
+
+Kill.Name = "Kill"
+Kill.Parent = Frame
+Kill.BackgroundColor3 = Color3.fromRGB(112, 112, 112)
+Kill.Position = UDim2.new(0.0572687238, 0, 0.651757181, 0)
+Kill.Size = UDim2.new(0, 200, 0, 50)
+Kill.Font = Enum.Font.SourceSans
+Kill.Text = "Kill Player"
+Kill.TextColor3 = Color3.fromRGB(0, 0, 0)
+Kill.TextSize = 20.000
+Kill.MouseButton1Click:connect(function()
+	local target = PlayerName.Text
+
+	while game:GetService("Players")[target].Character.Humanoid.Health > 0 do
+		chr = game:GetService("Players")[target].Character
+		chr.HumanoidRootPart.Size = Vector3.new(20,20,20)
+		wait()
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = chr.Head.CFrame * CFrame.new(0,9,0)
+	end
+end)
+
+UICorner_2.Parent = Kill
+
+PlayerName.Name = "PlayerName"
+PlayerName.Parent = Frame
+PlayerName.BackgroundColor3 = Color3.fromRGB(112, 112, 112)
+PlayerName.Position = UDim2.new(0.0572687238, 0, 0.115015976, 0)
+PlayerName.Size = UDim2.new(0, 200, 0, 126)
+PlayerName.Font = Enum.Font.SourceSans
+PlayerName.Text = "Player Name"
+PlayerName.TextColor3 = Color3.fromRGB(0, 0, 0)
+PlayerName.TextSize = 25.000
+
+UICorner_3.Parent = PlayerName

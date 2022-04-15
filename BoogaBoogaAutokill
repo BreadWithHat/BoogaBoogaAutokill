@@ -9,7 +9,6 @@ local UICorner = Instance.new("UICorner")
 local TextLabel = Instance.new("TextLabel")
 local Kill = Instance.new("TextButton")
 local PlayerName = Instance.new("TextBox")
-local target = PlayerName.Text
 
 --Properties:
 
@@ -46,6 +45,9 @@ Kill.Text = "Kill Player"
 Kill.TextColor3 = Color3.fromRGB(0, 0, 0)
 Kill.TextSize = 20.000
 Kill.MouseButton1Click:connect(function()
+    
+    local target = PlayerName.Text
+    
 	while game:GetService("Players")[target].Character.Humanoid.Health > 0 do
 		chr = game:GetService("Players")[target].Character
 		chr.HumanoidRootPart.Size = Vector3.new(20,20,20)

@@ -4,48 +4,99 @@
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
+local startclose = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
-local TextLabel = Instance.new("TextLabel")
-local Kill = Instance.new("TextButton")
-local PlayerName = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+local Maingui = Instance.new("Frame")
+local PlayerList = Instance.new("ScrollingFrame")
+local UICorner_2 = Instance.new("UICorner")
+local PlayerName = Instance.new("TextLabel")
+local UICorner_3 = Instance.new("UICorner")
+local Seperator = Instance.new("Frame")
+local killplayer = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local gotoplayer = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local close = Instance.new("TextButton")
 
 --Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
-Frame.Position = UDim2.new(0.890324831, 0, 0.628963232, 0)
-Frame.Size = UDim2.new(0, 227, 0, 313)
-Frame.Active = true
-Frame.Selectable = true
-Frame.Draggable = true
+startclose.Name = "startclose"
+startclose.Parent = ScreenGui
+startclose.BackgroundColor3 = Color3.fromRGB(98, 98, 98)
+startclose.Position = UDim2.new(0.482361197, 0, 0, 0)
+startclose.Size = UDim2.new(0, 100, 0, 100)
 
-UICorner.Parent = Frame
+UICorner.Parent = startclose
 
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0, 0, 0.0287539922, 0)
-TextLabel.Size = UDim2.new(0, 227, 0, 50)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "Booga Booga Autokill"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextSize = 28.000
+TextButton.Parent = startclose
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.BackgroundTransparency = 1.000
+TextButton.Size = UDim2.new(0, 100, 0, 100)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Open"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+TextButton.MouseButton1Click:connect(function()
+	Maingui.Visible = true
+end)
 
-Kill.Name = "Kill"
-Kill.Parent = Frame
-Kill.BackgroundColor3 = Color3.fromRGB(112, 112, 112)
-Kill.Position = UDim2.new(0.057, 0, 0.752156496, 0)
-Kill.Size = UDim2.new(0, 200, 0, 50)
-Kill.Font = Enum.Font.SourceSans
-Kill.Text = "Kill Player"
-Kill.TextColor3 = Color3.fromRGB(0, 0, 0)
-Kill.TextSize = 20.000
-Kill.MouseButton1Click:connect(function()
-    
+Maingui.Name = "Maingui"
+Maingui.Parent = startclose
+Maingui.BackgroundColor3 = Color3.fromRGB(98, 98, 98)
+Maingui.Position = UDim2.new(-3.08384633, 0, 3.40478969, 0)
+Maingui.Size = UDim2.new(0, 739, 0, 486)
+Maingui.Visible = false
+
+PlayerList.Name = "PlayerList"
+PlayerList.Parent = Maingui
+PlayerList.Active = true
+PlayerList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PlayerList.BackgroundTransparency = 1.000
+PlayerList.Position = UDim2.new(0.549391091, 0, 0, 0)
+PlayerList.Size = UDim2.new(0, 333, 0, 486)
+PlayerList.ScrollBarThickness = 8
+
+UICorner_2.Parent = Maingui
+
+PlayerName.Name = "PlayerName"
+PlayerName.Parent = Maingui
+PlayerName.BackgroundColor3 = Color3.fromRGB(156, 156, 156)
+PlayerName.BorderColor3 = Color3.fromRGB(27, 42, 53)
+PlayerName.Position = UDim2.new(0.058186736, 0, 0.0720164627, 0)
+PlayerName.Size = UDim2.new(0, 307, 0, 108)
+PlayerName.Font = Enum.Font.SourceSans
+PlayerName.Text = "Players Name"
+PlayerName.TextColor3 = Color3.fromRGB(0, 0, 0)
+PlayerName.TextScaled = true
+PlayerName.TextSize = 14.000
+PlayerName.TextWrapped = true
+
+UICorner_3.Parent = PlayerName
+
+Seperator.Name = "Seperator"
+Seperator.Parent = Maingui
+Seperator.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Seperator.Position = UDim2.new(0.53991878, 0, 0, 0)
+Seperator.Size = UDim2.new(0, 3, 0, 486)
+
+killplayer.Name = "killplayer"
+killplayer.Parent = Maingui
+killplayer.BackgroundColor3 = Color3.fromRGB(156, 156, 156)
+killplayer.Position = UDim2.new(0.0581867397, 0, 0.670781851, 0)
+killplayer.Size = UDim2.new(0, 307, 0, 108)
+killplayer.Font = Enum.Font.SourceSans
+killplayer.Text = "Kill Player"
+killplayer.TextColor3 = Color3.fromRGB(0, 0, 0)
+killplayer.TextScaled = true
+killplayer.TextSize = 14.000
+killplayer.TextWrapped = true
+killplayer.MouseButton1Click:connect(function()
     local target = PlayerName.Text
     
 	while game:GetService("Players")[target].Character.Humanoid.Health > 0 do
@@ -56,14 +107,100 @@ Kill.MouseButton1Click:connect(function()
     end
 end)
 
-PlayerName.Name = "PlayerName"
-PlayerName.Parent = Frame
-PlayerName.BackgroundColor3 = Color3.fromRGB(112, 112, 112)
-PlayerName.Position = UDim2.new(0.0572687387, 0, 0.221725121, 0)
-PlayerName.Size = UDim2.new(0, 200, 0, 133)
-PlayerName.Font = Enum.Font.SourceSans
-PlayerName.Text = ""
-PlayerName.TextColor3 = Color3.fromRGB(0, 0, 0)
-PlayerName.TextScaled = true
-PlayerName.TextSize = 14.000
-PlayerName.TextWrapped = true
+UICorner_4.Parent = killplayer
+
+gotoplayer.Name = "gotoplayer"
+gotoplayer.Parent = Maingui
+gotoplayer.BackgroundColor3 = Color3.fromRGB(156, 156, 156)
+gotoplayer.Position = UDim2.new(0.0581867397, 0, 0.388888896, 0)
+gotoplayer.Size = UDim2.new(0, 307, 0, 108)
+gotoplayer.Font = Enum.Font.SourceSans
+gotoplayer.Text = "Goto Player"
+gotoplayer.TextColor3 = Color3.fromRGB(0, 0, 0)
+gotoplayer.TextScaled = true
+gotoplayer.TextSize = 14.000
+gotoplayer.TextWrapped = true
+gotoplayer.MouseButton1Click:connect(function()
+	local p1 = game.Players.LocalPlayer.Character.HumanoidRootPart
+	local p2 = PlayerName.Text
+	local pos = p1.CFrame
+
+	p1.CFrame = game.Players[p2].Character.HumanoidRootPart.CFrame
+end)
+
+UICorner_5.Parent = gotoplayer
+
+close.Name = "close"
+close.Parent = Maingui
+close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+close.BackgroundTransparency = 1.000
+close.Size = UDim2.new(0, 28, 0, 28)
+close.Font = Enum.Font.SourceSans
+close.Text = "X"
+close.TextColor3 = Color3.fromRGB(0, 0, 0)
+close.TextScaled = true
+close.TextSize = 14.000
+close.TextWrapped = true
+close.MouseButton1Click:connect(function()
+	Maingui.Visible = false
+end)
+
+-- Scripts:
+
+local function VUUX_fake_script() -- PlayerList.LocalScript 
+	local script = Instance.new('LocalScript', PlayerList)
+
+	local function MVJD_fake_script()
+	
+		local script = Instance.new('LocalScript', PlayerList)
+		local playerlist = game.Players:GetChildren()
+		print(playerlist[1])
+		local playerbtnpos = 0	
+	
+		for players, person in pairs(playerlist) do
+			local playerbutton = Instance.new("TextButton")
+			playerbutton.Parent = PlayerList
+			playerbutton.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+			playerbutton.BorderColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+			playerbutton.Size = UDim2.new(0, 328,0, 20)
+			playerbutton.Position = UDim2.new(0, 0, 0, playerbtnpos)
+			playerbutton.Font = Enum.Font.SourceSans
+			playerbutton.Text = person.Name
+			playerbutton.TextColor3 = Color3.new(1, 1, 1)
+			playerbutton.TextSize = 14
+			playerbutton.TextScaled = true
+			playerbutton.MouseButton1Click:connect(function()
+				PlayerName.Text = person.Name
+			end)
+			playerbtnpos = playerbtnpos + 20
+		end
+		--
+		game.Players.ChildAdded:connect(function()
+			local PlayerButtons = PlayerList:GetChildren()
+			playerbtnpos = 0
+			for i, v in pairs(PlayerButtons) do
+				v:Destroy()
+			end
+			playerlist = game.Players:GetChildren()
+			for players, person in pairs(playerlist) do
+				local playerbutton = Instance.new("TextButton")
+				playerbutton.Parent = PlayerList
+				playerbutton.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+				playerbutton.BorderColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+				playerbutton.Size = UDim2.new(0, 328,0, 20)
+				playerbutton.Position = UDim2.new(0, 0, 0, playerbtnpos)
+				playerbutton.Font = Enum.Font.SourceSans
+				playerbutton.Text = person.Name
+				playerbutton.TextColor3 = Color3.new(1, 1, 1)
+				playerbutton.TextSize = 14
+				playerbutton.TextScaled = true
+				playerbutton.MouseButton1Click:connect(function()
+					PlayerName.Text = person.Name
+				end)
+				playerbtnpos = playerbtnpos + 20
+			end
+		end)
+	end
+	coroutine.wrap(MVJD_fake_script)()
+end
+coroutine.wrap(VUUX_fake_script)()
